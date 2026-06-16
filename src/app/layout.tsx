@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'Vericode AI | Next-generation AI IDE',
   description:
     'Plan, code, debug, test, and deploy with autonomous AI agents that work across your editor, terminal, browser, and workspace.',
+  icons: {
+    icon: [{ url: '/vericode-logo-mark-white.png', type: 'image/png' }],
+    shortcut: ['/vericode-logo-mark-white.png'],
+    apple: [{ url: '/vericode-logo-mark.png', type: 'image/png' }],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
