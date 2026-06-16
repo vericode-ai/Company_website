@@ -5,6 +5,7 @@ import { ArrowRight, Download } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { IDEPreview } from './IDEPreview';
+import { useDownloadComingSoon } from './DownloadComingSoon';
 import { LogoMark } from './Logo';
 
 const HeroParticles3D = dynamic(() => import('./HeroParticles3D').then((module) => module.HeroParticles3D), { ssr: false });
@@ -70,6 +71,7 @@ function TypingHeadline({ text }: { text: string }) {
 
 export function Hero() {
   const heroHeadlineDisplay = 'Build verified software\nwith VeriCode AI';
+  const openDownloadComingSoon = useDownloadComingSoon();
 
   return (
     <section id="home" className="surface-light relative isolate overflow-hidden pt-28 sm:pt-32 lg:min-h-[980px] lg:pt-32">
@@ -117,14 +119,15 @@ export function Hero() {
             transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
             className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
           >
-            <a
+            <button
+              type="button"
               id="download"
-              href="#downloads"
+              onClick={openDownloadComingSoon}
               className="pill-focus inline-flex items-center justify-center gap-2 rounded-full border border-black bg-black px-7 py-3.5 text-sm font-bold text-white shadow-[0_18px_46px_rgba(0,0,0,0.16)] transition duration-200 hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-[0_22px_60px_rgba(0,0,0,0.18)]"
             >
               <Download className="h-4 w-4" />
               Download for Windows
-            </a>
+            </button>
             <a
               href="#use-cases"
               className="pill-focus chrome-edge inline-flex items-center justify-center gap-2 rounded-full border border-neutral-200 bg-white px-7 py-3.5 text-sm font-semibold text-black shadow-[0_14px_35px_rgba(0,0,0,0.06)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-neutral-400 hover:text-black"

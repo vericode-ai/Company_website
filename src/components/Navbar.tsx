@@ -2,6 +2,7 @@
 
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useDownloadComingSoon } from './DownloadComingSoon';
 import { Logo } from './Logo';
 
 const navItems = [
@@ -14,6 +15,12 @@ const navItems = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const openDownloadComingSoon = useDownloadComingSoon();
+
+  const handleDownloadClick = () => {
+    setOpen(false);
+    openDownloadComingSoon();
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-black/[0.03] bg-white/[0.86] px-4 backdrop-blur-xl">
@@ -31,12 +38,13 @@ export function Navbar() {
               </a>
             ))}
           </div>
-          <a
-            href="#downloads"
+          <button
+            type="button"
+            onClick={handleDownloadClick}
             className="pill-focus hidden rounded-full bg-black px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_32px_rgba(0,0,0,0.16)] transition duration-200 hover:-translate-y-0.5 hover:bg-neutral-800 md:inline-flex"
           >
             Download
-          </a>
+          </button>
           <button
             type="button"
             aria-label={open ? 'Close navigation' : 'Open navigation'}
@@ -58,13 +66,13 @@ export function Navbar() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="#downloads"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              onClick={handleDownloadClick}
               className="mt-2 flex justify-center rounded-full bg-black px-5 py-3 text-sm font-semibold text-white"
             >
               Download
-            </a>
+            </button>
           </div>
         ) : null}
       </nav>

@@ -1,6 +1,7 @@
 'use client';
 
 import { Apple, Check, Download, Laptop, Terminal } from 'lucide-react';
+import { useDownloadComingSoon } from './DownloadComingSoon';
 import { InteractiveCard } from './InteractiveCard';
 import { Reveal } from './Reveal';
 
@@ -11,6 +12,8 @@ const downloads = [
 ];
 
 export function DownloadCards() {
+  const openDownloadComingSoon = useDownloadComingSoon();
+
   return (
     <section id="downloads" className="section-pad surface-light">
       <div className="container-page">
@@ -54,15 +57,16 @@ export function DownloadCards() {
                       Browser verification
                     </li>
                   </ul>
-                  <a
-                    href="#pricing"
+                  <button
+                    type="button"
+                    onClick={openDownloadComingSoon}
                     className={`pill-focus mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold ${
                       item.primary ? 'bg-white text-black' : 'border border-neutral-200 bg-white text-neutral-800'
                     }`}
                   >
                     <Download className="h-4 w-4" />
                     Download
-                  </a>
+                  </button>
                 </InteractiveCard>
               </Reveal>
             ))}
